@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div>
     <p>{{ }}</p>
     <input type="checkbox" name="" id="" @click="toggleCompleted">
@@ -17,4 +17,4 @@ defineProps<{
   completed: boolean
 }>()
 
-</script>
+</script> -->
