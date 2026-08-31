@@ -1,0 +1,94 @@
+## 4. Component Communication
+
+### `props` (The Care Package)
+
+- **In Plain English:** Data sent **downwards** from a parent component to a child component. The child can read this data, but it is **read-only**—the child is not allowed to change it directly.
+- **Code Example (Child Component):**
+
+  ```html
+  <script setup lang="ts">
+    // Macro used to define incoming data structure
+    defineProps<{
+      username: string;
+      age?: number; // Optional prop
+    }>();
+  </script>
+
+  <template>
+    <p>User: {{ username }} (Age: {{ age ?? 'N/A' }})</p>
+  </template>
+  ```
+
+### `emit` (The Walkie-Talkie)
+
+- **In Plain English:** A message sent **upwards** from a child component to its parent. Because a child cannot change a prop, it must "shout" an event up to the parent, telling the parent to update the data instead.
+- **Code Example (Child Component):**
+
+  ```html
+  <script setup lang="ts">
+    // Define the events this child is allowed to shout
+    const emit = defineEmits<{
+      (e: "deleteUser", id: number): void;
+    }>();
+
+    const handleClick = () => {
+      emit("deleteUser", 42); // Send event name and data up
+    };
+  </script>
+
+  <template>
+    <button @click="handleClick">Delete Me</button>
+  </template>
+  ```
+
+### `provide` & `inject` (Long Distance Broadcaster)
+
+Used to share data across many component layers without manually passing props down through middle components ("prop drilling").
+
+#### `provide` (The Broadcaster)
+
+- **In Plain English:** A top-level component sets up a data stream and broadcasts it under a specific key name.
+- **Code Example (Grandparent Component):**
+
+  ```html
+  <script setup lang="ts">
+    import { provide, ref, type InjectionKey } from "vue";
+
+    // 1. Create a typed key
+    export const themeKey = Symbol() as InjectionKey<string>;
+    const currentTheme = ref<string>("dark-mode");
+
+    // 2. Broadcast the data
+    provide(themeKey, currentTheme.value);
+  </script>
+  ```
+
+#### `inject` (The Radio Receiver)
+
+- **In Plain English:** A deeply nested child component tunes into the broadcast key set up by an ancestor and immediately gains access to that data.
+- **Code Example (Deep Child Component):**
+
+  ```html
+  <script setup lang="ts">
+    import { inject } from "vue";
+    import { themeKey } from "./Grandparent.vue"; // Import the key
+
+    // Tune into the broadcast. Provide a default fallback value just in case.
+    const appTheme = inject(themeKey, "light-mode");
+  </script>
+
+  <template>
+    <div :class="appTheme">Active Theme: {{ appTheme }}</div>
+  </template>
+  ```
+
+### Comparison Table
+
+| Feature       | Direction       | Best For                                           | TypeScript Advantage                                        |
+| :------------ | :-------------- | :------------------------------------------------- | :---------------------------------------------------------- |
+| **`props`**   | Downward        | Passing settings/data to immediate children.       | Enforces rigid data types via `defineProps<{}>`.            |
+| **`emit`**    | Upward          | Telling the immediate parent an action happened.   | Strongly types the event names and payload contents.        |
+| **`provide`** | Downward (Deep) | Broadcasting data to a whole tree of components.   | Requires an `InjectionKey` to guarantee type safety.        |
+| **`inject`**  | Upward (Lookup) | Grabbing broadcasted data from a distant ancestor. | Automatically knows the variable type via the imported key. |
+
+---
