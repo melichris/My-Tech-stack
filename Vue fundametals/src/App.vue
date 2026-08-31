@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import TaskList from './components/TaskList.vue';
 import TaskTracker from './components/TaskTracker.vue';
 import UserDashboard from './components/userDashboard.vue';
 
@@ -6,7 +7,8 @@ import UserDashboard from './components/userDashboard.vue';
 
 <template>
   <!-- <UserDashboard /> -->
-  <TaskTracker />
+  <!-- <TaskTracker /> -->
+  <TaskList />
 </template>
 
 <style scoped></style>
