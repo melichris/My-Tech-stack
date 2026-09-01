@@ -1,42 +1,72 @@
-# Vue-fundametals
+# vue-ts-training
 
-This template should help get you started developing with Vue 3 in Vite.
+Structured Vue 3 + TypeScript practice projects — ticketed training exercises covering reactivity, components, composables, and TypeScript fundamentals.
 
-## Recommended IDE Setup
+**Type:** Training / Skill Development
+**Stack:** Vue 3 (Composition API), TypeScript
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Overview
 
-## Recommended Browser Setup
+This repository is a collection of self-contained practice projects built to demonstrate Vue 3 Composition API and TypeScript competency. Each project is treated as a structured work item — with a defined objective, scope, acceptance criteria, and Definition of Done — rather than an open-ended learning exercise.
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+## Concepts Covered
 
-## Type Support for `.vue` Imports in TS
+**TypeScript**
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+- Primitive types, type inference, explicit annotations
+- Interfaces and optional properties
+- Union types and intersection types
+- Generics
+- Utility types: `Partial`, `Pick`, `Omit`, `Record`
 
-## Customize configuration
+**Vue 3 — Reactivity**
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+- `ref` and `reactive`
+- `computed` properties
+- `watch` and `watchEffect`
+- Lifecycle hooks (`onMounted`, `onUnmounted`, `onUpdated`)
 
-## Project Setup
+**Vue 3 — Components**
 
-```sh
-npm install
+- Props and typed prop declarations
+- Emits and typed custom events
+- Default and named slots
+- `provide` / `inject` for skip-level data sharing
+
+**Vue 3 — Composables**
+
+- Extracting reusable reactive logic into standalone composable functions
+
+## Projects
+
+| Project          | Description                                                                               | Status      |
+| ---------------- | ----------------------------------------------------------------------------------------- | ----------- |
+| `user-dashboard` | User profile viewer with simulated fetch, computed display logic, and profile update form | Complete    |
+| `task-tracker`   | Task list with filtering, completion toggling, and task creation                          | Complete    |
+| `recipe-book`    | Recipe browser with sorting, add/delete, and component-based card layout                  | In Progress |
+
+Each project folder contains its own implementation and follows the same core structure: typed data models, reactive state, simulated async data loading, component composition, and (where applicable) a composable extraction.
+
+## Project Structure
+
+```
+vue-fundamentals/
+├── user-dashboard/
+├── task-tracker/
+├── recipe-book/
+└── README.md
 ```
 
-### Compile and Hot-Reload for Development
+## Getting Started
 
-```sh
+Each project is a standalone Vue 3 + TypeScript app scaffolded with Vite.
+
+```bash
+cd <project-folder>
+npm install
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+## Notes
 
-```sh
-npm run build
-```
+Projects in this repository are training exercises intended to demonstrate applied competency in the Vue 3 / TypeScript stack. They are not production or client deliverables.
