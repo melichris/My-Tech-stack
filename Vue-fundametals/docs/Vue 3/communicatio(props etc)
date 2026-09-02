@@ -2,7 +2,7 @@
 
 ### `props` (The Care Package)
 
-- **In Plain English:** Data sent **downwards** from a parent component to a child component. The child can read this data, but it is **read-only**—the child is not allowed to change it directly.
+- **In Plain English:** Data sent **downwards** from a parent component to a child component. The child can read this data, but it is **read-only** - the child is not allowed to change it directly.
 - **Code Example (Child Component):**
 
   ```html

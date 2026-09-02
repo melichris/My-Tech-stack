@@ -159,7 +159,7 @@ export function useFetch<T>(url: string): UseFetchReturn<T> {
     <div v-else-if="error" class="error">Error: {{ error }}</div>
     <ul v-else-if="users">
       <li v-for="user in users" :key="user.id">
-        <strong>{{ user.name }}</strong> — {{ user.email }}
+        <strong>{{ user.name }}</strong> - {{ user.email }}
       </li>
     </ul>
   </div>

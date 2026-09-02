@@ -75,7 +75,7 @@ function getWebpage(): Promise<string> {
 
 3. You Manually Write new Promise()
 
-- If you are writing custom asynchronous code—like a timer, a file reader, or a delay—and you manually initialize a Promise object, the return type must match.
+- If you are writing custom asynchronous code - like a timer, a file reader, or a delay - and you manually initialize a Promise object, the return type must match.
 
 ```typescript
 // Rule: Returns 'new Promise'? Use 'Promise'.

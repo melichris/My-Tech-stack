@@ -76,7 +76,7 @@ export function useTasks() {
 
   function addTask() {
     const newTask: Task = {
-      id: Date.now() /* generate one somehow — Date.now() is a simple option */,
+      id: Date.now() /* generate one somehow  -  Date.now() is a simple option */,
       title: newTaskForm.title,
       priority: newTaskForm.priority,
       completed: false,

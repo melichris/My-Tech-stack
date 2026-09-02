@@ -1,42 +1,71 @@
-# recipe-book
+# Recipe Management Application
 
-This template should help get you started developing with Vue 3 in Vite.
+A small Vue 3 + TypeScript application for viewing, adding, deleting, and sorting recipes, with reactive aggregate statistics — built as a training exercise demonstrating typed interfaces, reactive state management, lifecycle-based data loading, and reusable component/composable architecture.
 
-## Recommended IDE Setup
+**Ticket:** TICKET-02-recipe-book
+**Type:** Training / Skill Development
+**Stack:** Vue 3 (Composition API), TypeScript
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Features
 
-## Recommended Browser Setup
+- View a list of recipes with name, ingredients, and vegetarian status
+- Add a new recipe via a validated form
+- Delete a recipe
+- Sort recipes by name, creation date, or vegetarian status
+- Live aggregate statistics: total recipe count and vegetarian count
+- Simulated asynchronous data loading with loading/success/error states
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+## Tech & Patterns Demonstrated
 
-## Type Support for `.vue` Imports in TS
+- **TypeScript:** `Recipe` interface, union types, `Omit`, `Record`
+- **Reactivity:** `ref`, `computed`, `onMounted`
+- **Component architecture:** four dedicated components (`RecipeList`, `RecipeItem`, `RecipeForm`, `StatsDisplay`), each with a single responsibility
+- **Component communication:** typed `props` and `emits`, with events forwarded up through intermediate components
+- **Composables:** all state and business logic extracted into `useRecipes.ts`, keeping components focused on presentation and orchestration
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+## Project Structure
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
+```
+recipe-book/
+├── src/
+│   ├── components/
+│   │   ├── RecipeList.vue
+│   │   ├── RecipeItem.vue
+│   │   ├── RecipeForm.vue
+│   │   └── StatsDisplay.vue
+│   ├── composables/
+│   │   └── useRecipes.ts
+│   ├── types/
+│   │   └── types.ts
+│   └── App.vue
+├── TICKET.md
+├── APPROACH.md
+├── REPORT.md
+└── README.md
 ```
 
-### Compile and Hot-Reload for Development
+## Getting Started
 
-```sh
+```bash
+npm install
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+## Type Checking
 
-```sh
-npm run build
+```bash
+npx vue-tsc --noEmit
 ```
+
+## Out of Scope
+
+- Backend/API integration (mock data only)
+- Persistent storage (data resets on reload)
+- Authentication or multi-user support
+- Advanced styling or animations
+
+## Related Documents
+
+- [`TICKET.md`](./TICKET.md) — objective, scope, acceptance criteria, Definition of Done
+- [`APPROACH.md`](./APPROACH.md) — planned implementation approach
+- [`REPORT.md`](./REPORT.md) — work completed, technical decisions, difficulties, evidence
